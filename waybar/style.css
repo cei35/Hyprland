@@ -1,0 +1,64 @@
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 15px;
+  color: #ffffff;
+}
+
+#waybar {
+  background: #1e1e2e;
+  border-bottom: 2px solid #44475a;
+  padding: 0;
+}
+
+#clock,
+#network,
+#pulseaudio,
+#battery,
+#cpu,
+#memory,
+#custom-weather {
+  padding: 0 10px;
+}
+
+#clock {
+  font-weight: bold;
+  color: #ff79c6;
+}
+
+#custom-weather {
+  font-style: italic;
+  color: #8be9fd;
+}
+
+#network {
+  color: #50fa7b;
+}
+
+#pulseaudio {
+  color: #ffb86c;
+}
+
+#battery {
+  color: #ffdc4f;
+}
+
+#cpu {
+  color: #bd93f9;
+}
+
+#memory {
+  color: #ff5555;
+}
+
+#waybar .module {
+  margin: 0 5px;
+}
+
+menu {
+	border-radius: 15px;
+	background: #161320;
+	color: #B5E8E0;
+}
+menuitem {
+	border-radius: 15px;
+}

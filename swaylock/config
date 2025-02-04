@@ -1,0 +1,8 @@
+image= ~/.config/lock.jpg
+font="JetBrainsMono Nerd Font"
+indicator-radius=100
+font-size=40
+clock
+timestr=%H:%M:%S
+datestr=%d %b %Y
+ignore-empty-password

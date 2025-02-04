@@ -1,0 +1,13 @@
+[Unit]
+Description=Hyprland Wayland Compositor
+After=graphical.target
+
+[Service]
+ExecStart=/usr/bin/Hyprland
+Restart=always
+Environment=WAYLAND_DISPLAY=wayland-1
+User=%u
+
+[Install]
+WantedBy=default.target
+
