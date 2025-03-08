@@ -6,7 +6,9 @@
   "modules-right": ["custom/weather", "cpu", "memory", "custom/power"],
   "custom/weather": {
     "interval": 300,
-    "exec": "curl -s 'wttr.in/?format=1'"
+    "exec": "~/.config/waybar/weather.sh",
+	"return-type": "json",
+	"tooltip": "true"
 },
   "network": {
     "interface": "wlan0",
