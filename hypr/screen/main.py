@@ -6,7 +6,7 @@ import subprocess
 
 def take_screenshot(mode):
     user = subprocess.run("whoami", text=True, capture_output=True).stdout.strip()
-    path = f"/home/{user}/Images/Captures_ecran/"
+    path = f"/home/{user}/Images/Screenshots/"
     subprocess.run(["hyprshot", "-m", mode, "-o", path])
 
 root = tk.Tk()
