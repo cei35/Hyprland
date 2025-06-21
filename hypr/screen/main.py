@@ -36,5 +36,5 @@ for mode, icon in icons.items():
     btn.image = img
     btn.pack(side=tk.LEFT, padx=5, pady=5)
 
+root.bind("<Escape>", lambda event: root.destroy())
 root.mainloop()
-

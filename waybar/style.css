@@ -11,13 +11,20 @@
 }
 
 #clock,
-#network,
 #pulseaudio,
+#backlight,
 #battery,
 #cpu,
 #memory,
+#custom-desktop,
+#custom-updates,
 #custom-weather {
   padding: 0 10px;
+}
+
+#network {
+  padding: 0;
+  margin: 0;
 }
 
 #clock {
@@ -28,6 +35,10 @@
 #custom-weather {
   font-style: italic;
   color: #8be9fd;
+}
+
+#backlight {
+  color:#99ccff;
 }
 
 #network {
@@ -61,4 +72,13 @@ menu {
 }
 menuitem {
 	border-radius: 15px;
+}
+
+#custom-desktop {
+  background-image: url('archico.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-width: 10px;
+  min-height: 10px;
 }

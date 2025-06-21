@@ -1,49 +1,59 @@
 {
   "layer": "top",
-  "height": 35,
-  "modules-left": ["network", "pulseaudio", "battery"],
+  "height": 30,
+  "modules-left": ["custom/desktop", "network", "pulseaudio", "backlight", "battery"],
   "modules-center": ["clock"],
-  "modules-right": ["custom/weather", "cpu", "memory", "custom/power"],
+  "modules-right": ["custom/weather", "custom/updates", "cpu", "memory", "custom/power"],
   "custom/weather": {
-    "interval": 300,
+    "interval": 15,
     "exec": "~/.config/waybar/weather.sh",
 	"return-type": "json",
 	"tooltip": "true"
 },
-  "network": {
+"custom/desktop":{
+	"format": " ",
+	"tooltip": false,
+	"on-click": "hyprctl dispatch exec ~/.config/hypr/bottom_menu.sh '/usr/bin/waybar -c ~/.config/waybar/dock-config.jsonc -s ~/.config/waybar/dock-style.css -b 1'"
+},
+"custom/updates": {
+    "format": "{} {icon}",
+    "return-type": "json",
+    "format-icons": {
+        "has-updates": "󱍷",
+        "updated": "󰂪"
+    },
+    "exec": "waybar-module-pacman-updates --interval-seconds 30 --network-interval-seconds 300"
+},
+"network": {
     "interface": "wlan0",
-    "format-wifi": "{ipaddr}  ({signalStrength}%)",
+    "family": "ipv4", //waybar bug
+    "format-wifi": " ({signalStrength}%)",
     "format-ethernet": "{ifname}: {ipaddr} ",
     "format-disconnected": " Offline",
     "tooltip-format": "{essid} ({ifname}): {ipaddr}\nSignal: {signalStrength}%",
     "format-icons": ["", "󰤥", "󰤨"],
-    "interval": 60
+    "interval": 30
 },
 "pulseaudio": {
-    "format": "{volume}%",
+    "format": "{volume}% {icon}",
     "format-muted": "󰖁",
+	"format-icons": {
+		"headphone": "",
+		"phone": "",
+		"default": ["", "", ""]
+	},
     "rotate": 0,
-    "states": {
-        "low": {
-            "min": 0,
-            "max": 30
-        },
-        "medium": {
-            "min": 31,
-            "max": 70
-        },
-        "high": {
-            "min": 71,
-            "max": 100
-        }
-    },
-    "max-length": 5,
+    "max-length": 6,
     "min-length": 3,
     "align": 1,
     "justify": "center",
     "on-click": "pamixer -t",
     "on-scroll-up": "pamixer -i 5",
     "on-scroll-down": "pamixer -d 5"
+},
+"backlight": {
+	"format": "{percent}% {icon}",
+	"format-icons": ["", "", "", "", "", "", "", "", ""]
 },
   "battery": {
 	"bat": "BAT0",
@@ -100,6 +110,7 @@
 		"menu": "on-click",
 		"menu-file": "~/.config/waybar/power_menu.xml",
 		"menu-actions": {
+			"airplane": "rfkill list | grep -q 'Soft blocked: no' && rfkill block all && notify-send ' on'|| (rfkill unblock all && notify-send ' off')",
 			"shutdown": "systemctl poweroff",
 			"reboot": "systemctl reboot -i",
 			"lock": "swaylock & sleep 0.5 && systemctl suspend",

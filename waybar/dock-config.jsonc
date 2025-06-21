@@ -1,0 +1,22 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": "28",
+    "modules-left": ["wlr/taskbar", "custom/bemenu"],
+    "margin-top": -20,
+    "margin-bottom": 0,
+
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": "25",
+        "tooltip-format": "{title} #{name} ##{app_id} ###{short_state}({state})",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "on-click-right": "~/.config/waybar/minimize.sh"
+    },
+    "custom/bemenu": {
+        "format": "🔎",
+        "on-click": "/usr/bin/bemenu-run --bottom --width-factor 0.4 --line-height 20 --border 2 --border-radius 10 --margin 0,10,0,0 --fn 'JetBrainsMono Nerd Font 13' --prompt='bemenu'",
+        "tooltip-format": "bemenu"
+    }
+} 
